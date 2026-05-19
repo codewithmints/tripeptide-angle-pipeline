@@ -1,15 +1,3 @@
-"""
-aggregate.py
-────────────
-Concatenate every per-batch CSV produced by parse_pdb.py into a single
-angles.csv that is consumed by plot.py.
-
-Usage (called by Snakemake):
-    python scripts/aggregate.py \
-        --input-dir results/batch_csvs \
-        --output    results/angles.csv
-"""
-
 import argparse
 import glob
 import logging
