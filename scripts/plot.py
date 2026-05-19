@@ -1,24 +1,10 @@
-"""
-plot.py
-───────
-Generate a publication-quality KDE plot of signed angle distributions,
-one curve per residue-size category, saved as plot.png.
-
-Usage (called by Snakemake):
-    python scripts/plot.py \
-        --input  results/angles.csv \
-        --output results/plot.png \
-        --xmin   -180 \
-        --xmax    180
-"""
-
 import argparse
 import logging
 import os
 import sys
 
 import matplotlib
-matplotlib.use("Agg")                        # headless / non-interactive backend
+matplotlib.use("Agg")                      
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import numpy as np
