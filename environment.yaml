@@ -1,0 +1,29 @@
+name: protein_angles
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  # Core Python
+  - python=3.11
+
+  # Structural biology
+  - biopython>=1.81
+  - dssp                      # provides mkdssp binary
+
+  # Numerics & data
+  - numpy>=1.24
+  - pandas>=2.0
+  - scipy>=1.11
+
+  # Visualisation
+  - matplotlib>=3.7
+  - seaborn>=0.13
+
+  # Pipeline
+  - snakemake-minimal>=7.32
+
+  # Optional but recommended for speed
+  - pip
+  - pip:
+    - tqdm

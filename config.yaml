@@ -1,0 +1,32 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Protein Side-Chain Angle Analysis — Pipeline Configuration
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Absolute or relative path to the directory that holds your .pdb files.
+# Subdirectories are searched recursively.
+pdb_dir: "/mnt/c/Users/meetj/Downloads/50k_pdbs/pdbs"
+
+# Where all pipeline outputs are written (created automatically).
+output_dir: "results"
+
+# Number of PDB files assigned to each Snakemake batch job.
+# Larger values = fewer jobs (less overhead); smaller = finer parallelism.
+batch_size: 500
+
+# Workers (threads) spawned *inside* each batch job via multiprocessing.Pool.
+# Snakemake uses this as the `threads` budget per rule, so total CPU usage is
+#   roughly: floor(--cores / n_workers_per_batch) batch jobs × n_workers_per_batch
+# Example: --cores 32, n_workers_per_batch 4  →  8 concurrent batch jobs.
+n_workers_per_batch: 4
+
+# Path to the DSSP binary on your system.
+# Common locations:
+#   conda  → <env>/bin/mkdssp
+#   Ubuntu → /usr/bin/mkdssp  (apt install dssp)
+#   macOS  → /usr/local/bin/mkdssp  (brew install dssp)
+dssp_executable: "mkdssp"
+
+# Minimum angle (degrees) for KDE x-axis (keep at -180 for full range).
+plot_xmin: -180
+# Maximum angle (degrees) for KDE x-axis.
+plot_xmax: 180
