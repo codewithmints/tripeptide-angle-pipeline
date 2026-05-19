@@ -1,25 +1,3 @@
-"""
-parse_pdb.py
-────────────
-Batch parser for the Protein Side-Chain Angle Analysis pipeline.
-
-For each PDB file in a manifest:
-  1. Parse structure with Biopython.
-  2. Run DSSP to get per-residue secondary structure.
-  3. Identify tripeptides  X – Arg(helix) – X.
-  4. Compute the CA→centroid vector for the left (X) and central (Arg) residue.
-  5. Compute the signed angle between those two vectors (axis = CA_left→CA_Arg).
-  6. Classify the left residue by size category.
-  7. Append one row per tripeptide to the output CSV.
-
-Usage (called by Snakemake):
-    python scripts/parse_pdb.py \
-        --manifest  results/batches/00000.txt \
-        --output    results/batch_csvs/00000.csv \
-        --workers   4 \
-        --dssp      mkdssp
-"""
-
 import argparse
 import csv
 import logging
